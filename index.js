@@ -14,12 +14,10 @@ const mongoose = require(`mongoose`)
 // routes import
 const userRoutes = require(`./src/routes/user/userRoutes.js`)
 const todoRoutes = require('./src/routes/todo/todoRoutes')
-// const mongoose = require('./src/routes/mongoose/mongoose')
 
 app.use(express.json())
 app.use(userRoutes)
 app.use(todoRoutes)
-// app.use(mongoose)
 
 
 mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client)=>{
