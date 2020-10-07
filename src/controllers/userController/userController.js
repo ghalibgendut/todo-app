@@ -8,16 +8,11 @@ class userContoller {
     regUser = async (req, res) => {
         const {nama, umur, alamat, username, email} = req.body
         const userPass = userService.userPassword(req.body.password)
-        const hashRes = userPass
-        console.log(`password di const hashRes: ${hashRes}`);
-        const user = new User({nama, umur, alamat, username, email},hashRes)
-        console.log(`password di const user: ${user.hashRes}`);
+        const user = new User({nama, umur, alamat, username, email, password:userPass})
 
         try {
-            
-            // user.password = bcrypt.hashSync(user.password, 8)
-            // let result = await user.save()
-            res.status(200).send(user)
+            let result = await user.save()
+            res.status(200).send(result)
 
         } catch (err) {
             res.status(500).send({ message: err.message })
