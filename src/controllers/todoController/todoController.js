@@ -1,7 +1,7 @@
 const Todo = require('../../models/todoModel/todoModel')
 const User = require('../../models/userModel/userModel')
 
-class ConTodo {
+class todoController {
     // Buat 1 Todo berdasarkan ID user
     createTodo = async(req,res)=>{
         const owner = req.params.userid
@@ -16,7 +16,7 @@ class ConTodo {
             await user.save()
             res.status(200).send(todo)
         } catch (err) {
-            res.status(500).send({message: err})
+            res.status(500).send({message: err.message})
         }
     }
 
@@ -26,7 +26,7 @@ class ConTodo {
             let result = await Todo.find({})
             res.status(200).send(result)
         } catch (err) {
-            res.status(500).send({message: err})
+            res.status(500).send({message: err.message})
         }
     }
 
@@ -42,7 +42,7 @@ class ConTodo {
             res.status(200).send(user[0].todos)
     
         } catch (err) {
-            res.status(500).send({message: err})
+            res.status(500).send({message: err.message})
         }
     }
 
@@ -71,7 +71,7 @@ class ConTodo {
     
             res.status(200).send(todo)
         } catch (err) {
-            res.status(500).send({message: err})
+            res.status(500).send({message: err.message})
         }
     }
 
@@ -98,4 +98,4 @@ class ConTodo {
     }
 }
 
-module.exports = new ConTodo
+module.exports = new todoController

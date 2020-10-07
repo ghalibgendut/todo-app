@@ -20,7 +20,7 @@ app.use(userRoutes)
 app.use(todoRoutes)
 
 
-mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client)=>{
+mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true}, (err, client)=>{
     err ? console.log(err) : console.log(`Connected to DB`)
 
     app.get('/', (req,res)=>{
