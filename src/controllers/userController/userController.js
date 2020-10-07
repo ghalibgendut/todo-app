@@ -1,13 +1,17 @@
 const User = require(`../../models/userModel/userModel`)
 const userService = require(`../../services/userService/userService.js`)
+// const bcrypt = require('bcrypt')
 
 class userContoller {
 
     // Register user
     regUser = async (req, res) => {
+        const {nama, umur, alamat, username, email} = req.body
         const userPass = userService.userPassword(req.body.password)
         const hashRes = userPass
-        const user = new User(req.body)
+        console.log(`password di const hashRes: ${hashRes}`);
+        const user = new User({nama, umur, alamat, username, email},hashRes)
+        console.log(`password di const user: ${user.hashRes}`);
 
         try {
             

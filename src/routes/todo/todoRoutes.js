@@ -6,8 +6,6 @@ const todoController = require('../../controllers/todoController/todoController.
 // Create todo
 app.post('/todo/:userid', todoController.createTodo)
 
-
-
 // Read all todo
 app.get('/todo', todoController.readAllTodo)
 
