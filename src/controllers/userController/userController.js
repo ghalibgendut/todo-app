@@ -5,15 +5,15 @@ class userContoller {
 
     // Register user
     regUser = async (req, res) => {
-        const user = new User(req.body)
         const userPass = userService.userPassword(req.body.password)
         const hashRes = userPass
+        const user = new User(req.body)
 
         try {
-            console.log(`user password di controller : ${hashRes}`);
+            
             // user.password = bcrypt.hashSync(user.password, 8)
             // let result = await user.save()
-            // res.status(200).send(result)
+            res.status(200).send(user)
 
         } catch (err) {
             res.status(500).send({ message: err.message })
