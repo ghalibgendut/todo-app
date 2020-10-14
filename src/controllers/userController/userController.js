@@ -1,21 +1,16 @@
 const User = require(`../../models/userModel/userModel`)
 const userService = require(`../../services/userService/userService.js`)
-// const bcrypt = require('bcrypt')
 
 class userContoller {
 
     // Register user
     regUser = async (req, res) => {
-        const {nama, umur, alamat, username, email} = req.body
-        const userPass = userService.userPassword(req.body.password)
-        const user = new User({nama, umur, alamat, username, email, password:userPass})
-
         try {
-            let result = await user.save()
-            res.status(200).send(result)
+            const user = userService.createUser(req.body)
+            res.status(200).send(user)
 
         } catch (err) {
-            res.status(500).send({ message: err.message })
+            res.status(500).send({ message: err.error })
         }
     }
 
