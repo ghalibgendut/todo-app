@@ -15,10 +15,10 @@ const mongoose = require(`mongoose`)
 const userRoutes = require(`./src/routes/user/userRoutes.js`)
 const todoRoutes = require('./src/routes/todo/todoRoutes')
 
+
 app.use(express.json())
 app.use(userRoutes)
 app.use(todoRoutes)
-
 
 mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true}, (err, client)=>{
     err ? console.log(err) : console.log(`Connected to DB`)

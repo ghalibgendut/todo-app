@@ -1,7 +1,13 @@
 const User = require(`../../models/userModel/userModel`)
 const userService = require(`../../services/userService/userService.js`)
+const axios = require('axios')
+// const auth = require('basic-auth')
+
+
 
 class userContoller {
+
+    
 
     // Register user
     regUser = async (req, res) => {
@@ -27,7 +33,20 @@ class userContoller {
 
     // Read All user
     readUser = async (req, res) => {
+        // let credential = auth(req)
         try {
+            // axios({
+            //     method: 'get',
+            //     url: 'localhost:2020/users',
+            //     headers: {
+            //         auth: {
+            //             username: 'ujang',
+            //             password: 'abc123456789'
+            //         }
+            //     }
+            // }).then( async () => {
+                
+            // })
             let result = await User.find({})
             res.status(200).send({ result })
         } catch (err) {
