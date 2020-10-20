@@ -24,7 +24,7 @@ mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreat
     err ? console.log(err) : console.log(`Connected to DB`)
 
     app.get('/', (req,res)=>{
-        res.status(200).send(`<h1>Welcome to Testing API</h1>`)
+        res.status(200).send(`<h1>Welcome to Testing API PORT: ${port}</h1>`)
     })
 
 })
